@@ -1,0 +1,25 @@
+{% extends "jobseeker/base.html" %}
+
+{% block bodyblock %}
+<div class="container my-5 ">
+<div class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h5 class="card-title fw-bolder text-center">{{request.user}}</h5>
+      <p class="card-text">Qualification:{{data.qualification}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Skill:{{data.skill}}</li>
+      <li class="list-group-item">Experience:{{data.experience}}</li>
+      <li class="list-group-item">Gender:{{data.gender}}</li>
+      <li class="list-group-item">Contact:{{data.contact}}</li>
+      <!-- <li class="list-group-item"><a href="data.resume.url" download="">{{data.resume.url}}</a></li> -->
+      <li class="list-group-item">Resume:Resume_fresher_2020</li>
+    </ul>
+    <div class="card-body">
+      <a href="data.resume.url" download="" class="card-link btn btn-dark">Download</a>
+      <a href="{% url 'p_edit' data.id %}" class="card-link btn btn-dark">Edit profile</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

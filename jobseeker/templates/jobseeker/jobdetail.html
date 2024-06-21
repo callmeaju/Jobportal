@@ -1,0 +1,53 @@
+{%extends "jobseeker/base.html"%}
+{% load static %} 
+{%block bodyblock%}
+
+<div class="card mt-5" style="width:80%; height: 500px;">
+    <div class="row">
+        <div class="col-md-4 d-flex align-items-center">
+            {%if jobview.poster%}
+            <img src="{{jobview.poster.url}}" class="img-fluid rounded-start" alt="" style="height: 500px;">
+            {%endif%}
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <div class="card-title fw-bolder">
+                    {{jobview.title}}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Company:{{jobview.company_name}}</li>
+                    <li class="list-group-item">Experience:{{jobview.experience}}</li>
+                    <li class="list-group-item">Salary:{{jobview.salary}}</li>
+                    <li class="list-group-item">Qualification:{{jobview.qualification}}</li>
+                    <li class="list-group-item">Skills:{{jobview.skills}}</li>
+                    <li class="list-group-item">Category:{{jobview.category}}</li>
+
+                </ul>
+                <div class="card-body d-flex justify-content-center">
+                    <form action="{% url 'applyjob' jobview.id %}" method ="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Apply Now</button>
+                    </form>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}
+
+
+
+<!-- <div class="card-body d-flex justify-content-center">
+    <form action="{% url 'jobapply' jobview.id %}" method="post">
+        {%csrf_token%}
+        <button type="submit" class="btn-primary">Apply</button>
+    </form>
+    
+
+    
+
+</div> -->

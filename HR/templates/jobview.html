@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%block mainblock%}
+{% for i in qs %}
+<div class="card mb-3 w-75 mt-0">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {%if 'i.poster' %}
+        <img src="{{ i.poster.url }}" class="img-fluid rounded-start h-100" alt="...">
+        {%endif%}  
+    </div>
+      <div class="col-md-5">
+        <div class="card-body">
+            
+
+          <h5 class="card-title">{{i.title}}</h5>
+          <h5 class="card-title">{{i.company_name}}</h5>
+          <h5 class="card-title">{{i.experience}}</h5>
+          <h5 class="card-title">{{i.salary}}</h5>
+          <h5 class="card-title">{{i.qualification}}</h5>
+          <h5 class="card-title">{{i.skills}}</h5>
+          <h5 class="card-title">{{i.category}}</h5>
+
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'joblist' %}" class="text-decoration-none " style="color: beige;">Back to Joblist</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,118 @@
+
+{% extends 'jobseeker/base.html' %}
+    
+
+{% load static %}
+
+{% block bodyblock %}
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="custom-background container text-center">
+            <h1 class="display-4">Hi, {{ request.user }}</h1>
+
+            {% if request.user.profile %}
+                <div class="btn-group mt-3" role="group" aria-label="Profile Links">
+                    <a href="{% url 'p_edit' request.user.profile.id %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'p_view' request.user.profile.id %}" class="btn btn-secondary">View Profile</a>
+                </div>
+            {% else %}
+                <p class="mt-3">
+                    <a href="{% url 'seekerprofile' %}" class="btn btn-success">Add Profile</a>
+                </p>
+            {% endif %}
+
+        <div class="mt-4">
+                {{ data }}
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Include Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #f9f9f9; /* Set a light background color for the entire page */
+        }
+
+        .custom-background {
+            background-color: #f5e1da; /* Pastel color example; you can choose your desired pastel color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+{% endblock %}
+
+
+
+<!-- second styling -->
+{%extends 'jobseeker/base.html'%}
+{% load static%}
+{%block bodyblock%}
+<h1 class="mt-5">Hello {{request.user}}</h1>
+{%if request.user.profile%}
+<a href="{% url 'p_view' request.user.profile.id %}" class="btn btn-outline-info">VIEW PROFILE</a>
+<a href="{% url 'p_edit' request.user.profile.id %}" class="btn btn-outline-warning">EDIT PROFILE</a>
+{%else%}
+<a href="{% url 'seekerprofile' %}">ADD PROFILE</a>
+
+{% endif %}
+
+<div class="card" style="width: 18rem; " >
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+{%endblock%}
+
+
+
+<!-- third -->
+{%extends 'jobseeker/base.html'%}
+{% load static%}
+{%block bodyblock%}
+<h1 class="mt-5">Hello {{request.user}}</h1>
+{%if request.user.profile%}
+<a href="{% url 'p_view' request.user.profile.id %}" class="btn btn-outline-info">VIEW PROFILE</a>
+<a href="{% url 'p_edit' request.user.profile.id %}" class="btn btn-outline-warning">EDIT PROFILE</a>
+{%else%}
+<a href="{% url 'seekerprofile' %}">ADD PROFILE</a>
+
+{% endif %}
+
+<div class="container d-flex">
+    <div class="row">
+        {% for i in job %}
+        <div class = "col-md-3 mb-4 ms-3">
+            
+            <div class="card " style="width: 18rem;" >
+                <img src="{{i.poster.url}}" class="card-img-top" alt="..." style="height:200px;">
+                <div class="card-body text-center text-dark">
+                    <h5 class="card-title fw-bolder mb-2">Position:{{i.title}}</h5>
+                    <p class="card-text">{{i.company_name}}</p>
+                    <p class="card-text">Salary:{{i.salary}}</p>
+
+                    <a href="#" class="btn btn-sm-primary">View</a>
+                    <a href="#" class="btn btn-sm-primary">Applynow</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>  
+    
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
